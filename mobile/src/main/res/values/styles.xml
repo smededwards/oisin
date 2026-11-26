@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.HourlyNotice" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/splash_purple</item>
+    </style>
+    <style name="Theme.HourlyNotice.TimePicker" parent="android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/time_picker_purple</item>
+    </style>
+</resources>
