@@ -1,6 +1,7 @@
 package com.hourlynotice.wear
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -32,6 +33,7 @@ import com.hourlynotice.shared.Schedule
 
 class MainActivity : ComponentActivity() {
     private var schedule by mutableStateOf(Schedule())
+    @SuppressLint("InvalidFragmentVersionForActivityResult")
     private val notificationPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     override fun onCreate(savedInstanceState: Bundle?) {

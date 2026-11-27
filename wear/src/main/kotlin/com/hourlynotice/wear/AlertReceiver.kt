@@ -3,6 +3,7 @@ package com.hourlynotice.wear
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.VibrationEffect
 import android.os.VibrationAttributes
 import android.os.Vibrator
@@ -31,16 +32,23 @@ class AlertReceiver : BroadcastReceiver() {
         }
 
         private fun vibrate(context: Context, pattern: LongArray) {
-            context.getSystemService(Vibrator::class.java).vibrate(
-                VibrationEffect.createWaveform(
-                    pattern,
-                    pattern.map { if (it == 0L) 0 else 255 }.toIntArray(),
-                    -1,
-                ),
-                VibrationAttributes.Builder()
-                    .setUsage(VibrationAttributes.USAGE_ALARM)
-                    .build(),
+            val vibrator = context.getSystemService(Vibrator::class.java)
+            val effect = VibrationEffect.createWaveform(
+                pattern,
+                pattern.map { if (it == 0L) 0 else 255 }.toIntArray(),
+                -1,
             )
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                vibrator.vibrate(
+                    effect,
+                    VibrationAttributes.Builder()
+                        .setUsage(VibrationAttributes.USAGE_ALARM)
+                        .build(),
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                vibrator.vibrate(effect)
+            }
         }
     }
 }
