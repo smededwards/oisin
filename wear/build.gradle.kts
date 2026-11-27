@@ -37,5 +37,5 @@ dependencies {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2024.12.01"))
+    implementation(platform("androidx.compose:compose-bom:2026.11.01"))
 }
