@@ -12,7 +12,7 @@ object AlertTimes {
                 for (minute in 0 until 60 step schedule.intervalMinutes) {
                     val candidate = date.atTime(hour, minute).atZone(now.zone)
                     val candidateMinute = hour * 60 + minute
-                    if (candidate.isAfter(now) && candidateMinute in schedule.startMinutes until schedule.endMinutes) return candidate
+                    if (candidate.isAfter(now) && candidateMinute in schedule.startMinutes..schedule.endMinutes) return candidate
                 }
             }
         }

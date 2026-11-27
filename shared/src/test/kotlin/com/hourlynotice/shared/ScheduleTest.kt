@@ -13,6 +13,7 @@ class ScheduleTest {
         assertEquals(schedule, Schedule.decode(schedule.encode()))
         assertTrue(schedule.isActiveAt(LocalDateTime.of(2026, 11, 16, 10, 0)))
         assertFalse(schedule.isActiveAt(LocalDateTime.of(2026, 11, 17, 10, 0)))
-        assertFalse(schedule.isActiveAt(LocalDateTime.of(2026, 11, 16, 17, 0)))
+        assertTrue(schedule.isActiveAt(LocalDateTime.of(2026, 11, 16, 17, 0)))
+        assertFalse(schedule.isActiveAt(LocalDateTime.of(2026, 11, 16, 17, 1)))
     }
 }
