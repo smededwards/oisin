@@ -17,8 +17,8 @@ class AlertReceiver : BroadcastReceiver() {
         if (schedule.isActiveAt(now)) {
             val pattern = when (schedule.intervalMinutes) {
                 60 -> VibrationPatterns.byId("hourly_notice_five_pulse").timings
-                30 -> VibrationPatterns.byId("double_short").timings
-                else -> VibrationPatterns.byId("single_short").timings
+                30 -> VibrationPatterns.byId("triple_short").timings
+                else -> VibrationPatterns.byId("double_short").timings
             }
             vibrate(context, pattern)
         }

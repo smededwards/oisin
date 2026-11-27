@@ -16,7 +16,7 @@ data class Schedule(
     fun isActiveAt(now: LocalDateTime): Boolean {
         val day = 1 shl (now.dayOfWeek.value - 1)
         val minute = now.hour * 60 + now.minute
-        return active && !paused && daysMask and day != 0 && minute in startMinutes until endMinutes
+        return active && !paused && daysMask and day != 0 && minute in startMinutes..endMinutes
     }
 
     fun encode(): String = listOf(
